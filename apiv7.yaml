@@ -1,0 +1,745 @@
+_type: export
+__export_format: 4
+__export_date: 2023-08-15T11:30:04.751Z
+__export_source: insomnia.desktop.app:v2023.4.0
+resources:
+  - _id: req_b491db01c411482eb27ea8b3f4a2dd2b
+    parentId: fld_b9909d7a5a1c4b84a13242f18f2a6a06
+    modified: 1692075821262
+    created: 1692075244018
+    url: http://127.0.0.1:5000/theater
+    name: /theater
+    description: Creates new trheater from the json object having Name, Location and
+      capacity as values.
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "exampleTheater",
+          "location": "exampleLocation",
+          "capacity": 0
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+        id: pair_fe88d19c052a4088b5cc75b90e3d7be6
+      - id: pair_505ecae54cd9470db7372c7634b794b2
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1692074710195.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: true
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_b9909d7a5a1c4b84a13242f18f2a6a06
+    parentId: fld_b3140b87ece94422968351efd4f83140
+    modified: 1692096853561
+    created: 1692075096057
+    name: Theater_CRUD
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1692096818420.5
+    _type: request_group
+  - _id: fld_b3140b87ece94422968351efd4f83140
+    parentId: fld_9575196ae6cb4e879c0d4b6b0ea87a0e
+    modified: 1692096843349
+    created: 1692096823634
+    name: Admin
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1692074710314
+    _type: request_group
+  - _id: fld_9575196ae6cb4e879c0d4b6b0ea87a0e
+    parentId: wrk_0859d9fc66b6434e80bba22abc37aebb
+    modified: 1692074696578
+    created: 1692074696578
+    name: API
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1692074696578
+    _type: request_group
+  - _id: wrk_0859d9fc66b6434e80bba22abc37aebb
+    parentId: null
+    modified: 1691239433391
+    created: 1691239433391
+    name: Movie ticket booking 1.0.0
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_f2380fcffd094a248f912cded9067ec5
+    parentId: fld_b9909d7a5a1c4b84a13242f18f2a6a06
+    modified: 1692075822298
+    created: 1692075385221
+    url: http://127.0.0.1:5000/theater
+    name: /theater
+    description: Returns all Theaters for the Admin User with related Shows
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_b141a8be6cd748fe8c570054dc25750c
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1692074710167.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0f73d8c7b5a94f94aa708ad06b444e02
+    parentId: fld_b9909d7a5a1c4b84a13242f18f2a6a06
+    modified: 1692075933768
+    created: 1692075810249
+    url: http://127.0.0.1:5000/theater/3
+    name: /theater/{id}
+    description: Givena json with new Name, location and capacity values, updates
+      the same values in db.
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"changedName",
+        	"location":"changedLocation",
+        	"capacity":0
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+        id: pair_42b4fc90c5764b5a912e415eda48c83a
+      - id: pair_b5b6d95715f847fab6e528ba13f583a4
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1692074710153.0625
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1d10a87509cf47949df28027e4958973
+    parentId: fld_b9909d7a5a1c4b84a13242f18f2a6a06
+    modified: 1692075790518
+    created: 1692075537050
+    url: http://127.0.0.1:5000/theater/4
+    name: /theater/{id}
+    description: Delete the theater with the id given in path
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_fb295f2ef9914855adb4654ace81c358
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1692074710139
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_de0222fa8b7f4e21a62cb4f090259aa0
+    parentId: fld_756d0cfc0a3d46698790c7c771c1d3ab
+    modified: 1692076468391
+    created: 1692076465452
+    url: http://127.0.0.1:5000/movie
+    name: /movie
+    description: Create a new movie from a json having Name, rating, User rating,
+      tags and duration of the movie.
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"duration": "03:00",
+        		"name": "exampleName",
+        		"rating": "exampleRating",
+        		"tags": "exampleTag1, exampleTag2",
+        		"userRating": 0
+        	}
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a363b2256c1c49e4b630baffd8300064
+      - id: pair_f47dc686250446e08fe7b027e8222599
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1691258161362.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_756d0cfc0a3d46698790c7c771c1d3ab
+    parentId: fld_b3140b87ece94422968351efd4f83140
+    modified: 1692096855877
+    created: 1692075971231
+    name: Movie_CRUD
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1692096818370.5
+    _type: request_group
+  - _id: req_631db2f423644364b9b43ae3e9d5548e
+    parentId: fld_756d0cfc0a3d46698790c7c771c1d3ab
+    modified: 1692076612855
+    created: 1692076609841
+    url: http://127.0.0.1:5000/movie
+    name: /movie
+    description: Get all Movies for Given User
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_6f3a4675e13a4bc1851005fa77b3100c
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1691258161312.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a1a283727240464e92ec7ed6289c5e56
+    parentId: fld_756d0cfc0a3d46698790c7c771c1d3ab
+    modified: 1692076745412
+    created: 1692076738740
+    url: http://127.0.0.1:5000/movie/6
+    name: /movie/{id}
+    description: Update Values of movies provided in the JSON
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"changedExample",
+        	"duration":"",
+        	"tags":"",
+        	"rating": "",
+        	"userRating":null
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_ed38f2cba1cf465da95c882ced3a583a
+      - id: pair_0b3d21c2831a4446a4a81d6f7747f05f
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1691258161262.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_fe742f314994463e9a5e419ee1484ad6
+    parentId: fld_756d0cfc0a3d46698790c7c771c1d3ab
+    modified: 1692076812595
+    created: 1691258161406
+    url: http://127.0.0.1:5000/movie/6
+    name: /movie/{id}
+    description: Delete the Movie with ID as provided in the route
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_4b3e0a1eaeed4bdb8bcabaf1dd9fe424
+        name: Authorization
+        value: ""
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1691258161212.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_38b71fc2d9e44abb874b4fd7901cf00d
+    parentId: fld_5d4a115534f94812a5af1ea165604a04
+    modified: 1692096392685
+    created: 1692096291392
+    url: http://127.0.0.1:5000/show
+    name: /show
+    description: Given a json with items movie, title, caption, starton, endon, time
+      and price, create a new mapping for the given movie to the theater
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"movie":0,
+        	"title":"exampleTitle",
+        	"caption":"exampleCaption",
+        	"starton":"2023-08-8",
+        	"endon":"2023-08-16",
+        	"time":"12:30",
+        	"price":0
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+        id: pair_da3acfb9844a4d279f642cf6e6eddb7f
+      - id: pair_8343e20200374f09b54e96b3a469145c
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1692074710164
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_5d4a115534f94812a5af1ea165604a04
+    parentId: fld_b3140b87ece94422968351efd4f83140
+    modified: 1692096857255
+    created: 1692096306762
+    name: Show_CRUD
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1692096818320.5
+    _type: request_group
+  - _id: req_1c7a5c9a6bed46b68fae6be52c842530
+    parentId: fld_5d4a115534f94812a5af1ea165604a04
+    modified: 1692096482703
+    created: 1692096475445
+    url: http://127.0.0.1:5000/show/0
+    name: /show/{id}
+    description: Given id in the route, get all available shows for the given id
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_b4e314c49c31413590fa869008b320a2
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5MTQ1Njg2MiwianRpIjoiMzM2N2RkNzQtOGRkNi00NzM1LWJjZjktOWQ3ODc1OWIwMzQwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluMSIsIm5iZiI6MTY5MTQ1Njg2MiwiZXhwIjoxNjkxNjI5NjYyfQ.boAnl21Bm8s5D-SsuwdW35uPFQ8oOgd0FDzDBRordDQ
+        description: ""
+    authentication: {}
+    metaSortKey: -1692074710114
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f2817b4487114ca4a506bcd74406cd29
+    parentId: fld_5d4a115534f94812a5af1ea165604a04
+    modified: 1692096611770
+    created: 1692096609158
+    url: http://127.0.0.1:5000/show/0
+    name: /show/{id}
+    description: Given the id in the route (and in form as PUT request needs
+      complete data) update the particular show
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"title":"newTitle",
+        	"caption":"newCaption",
+        	"price":0
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_be695906ac204152b3a00a8d93d08511
+      - id: pair_584802bbe3b64c85ab612762bd99e9a1
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1692074710064
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1cdcaa893fc94f1caa77750e8e6e879a
+    parentId: fld_5d4a115534f94812a5af1ea165604a04
+    modified: 1692096666935
+    created: 1692096663894
+    url: http://127.0.0.1:5000/show/0
+    name: /show/{id}
+    description: Delete the show with given id given it passes constraints
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_848c5dde61cc4259b3cbe64dbfef463c
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1692074710014
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a166db0d08cf472c808f54a797770427
+    parentId: fld_5d4a115534f94812a5af1ea165604a04
+    modified: 1692096726794
+    created: 1691324547213
+    url: http://127.0.0.1:5000/show/0
+    name: show/{id}
+    description: Path request is to DEACTIVATE the show given it passes constraints
+    method: PATCH
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_96bc6e528daf4ca09069bee4a17cb728
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1692074709964
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_762acd4ce4cc427da2eaf3a36c5133e5
+    parentId: fld_a09684a88e2842d9be89b40a04f03c59
+    modified: 1692074958863
+    created: 1692074758153
+    url: http://127.0.0.1:5000/signup
+    name: /signup
+    description: Signup with Username, email and Password. Returns Auth token and role.
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username":"exampleUser",
+        	"email":"User@example.domain",
+        	"password":"examplePassword"
+        }
+    parameters: []
+    headers:
+      - id: pair_5b4374eada8649028669fe4de945e638
+        name: Content-Type
+        value: application/json
+        description: ""
+    authentication: {}
+    metaSortKey: -1692074710289
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_a09684a88e2842d9be89b40a04f03c59
+    parentId: fld_9575196ae6cb4e879c0d4b6b0ea87a0e
+    modified: 1692096848420
+    created: 1692074710339
+    name: UserManagement
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1692074710164
+    _type: request_group
+  - _id: req_0b1df4957aa84b0da6fbc39b570152cc
+    parentId: fld_a09684a88e2842d9be89b40a04f03c59
+    modified: 1692074999204
+    created: 1691239433411
+    url: http://127.0.0.1:5000/login_user
+    name: /login_user
+    description: Login using Username and password as JSON. Returns auth token and role
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "username": "exampleUser",
+          "password": "examplePassword"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+    authentication: {}
+    metaSortKey: -1692074710239
+    isPrivate: false
+    settingStoreCookies: false
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c8d0e9350819452b9032e961e01a6d20
+    parentId: fld_d785f093f354496cb0070afd124d1cc3
+    modified: 1692096881550
+    created: 1692096804189
+    url: http://127.0.0.1:5000/booking
+    name: /booking
+    description: Book a show with id == bookedshow, number of seats for the total price
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"bookedshow":0,
+        	"seats":0,
+        	"total":0
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_31cc2c4cf46f411fa56322a32a29cf9f
+      - id: pair_093e6d1192fa493bbc374ef4fa368167
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1691324421019.5938
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_d785f093f354496cb0070afd124d1cc3
+    parentId: fld_9575196ae6cb4e879c0d4b6b0ea87a0e
+    modified: 1692096877629
+    created: 1692096813207
+    name: User
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1692074710114
+    _type: request_group
+  - _id: req_5b0edc3ba18b4c4088bd79203e6f698d
+    parentId: fld_d785f093f354496cb0070afd124d1cc3
+    modified: 1692096911659
+    created: 1692096908372
+    url: http://127.0.0.1:5000/booking
+    name: /booking
+    description: Get all bookings for a given user
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_5e004493a9a64c97a8aac00e5a1572ed
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1691324420969.5938
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f2e0c5b4b92b435cb3f5e5cbf3e5e510
+    parentId: fld_d785f093f354496cb0070afd124d1cc3
+    modified: 1692096960449
+    created: 1692096958367
+    url: http://127.0.0.1:5000/shows/0
+    name: /shows/{id}
+    description: Get all available slots for a given show
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_671b2aa00acc4e4d81e6959a03ff0308
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1691324420919.5938
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_943d3e3f5ff740a18088bbe1808f13db
+    parentId: fld_d785f093f354496cb0070afd124d1cc3
+    modified: 1692097087317
+    created: 1692097084944
+    url: http://127.0.0.1:5000/shows
+    name: /shows?name={paramname}&value={paramvalue}
+    description: "Return Movies with shows for a given Query parameters (name: eg
+      tags, value: eg Drama)"
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_e07ad498220b4026b054d0b88988b2a8
+        name: name
+        value: ""
+        description: ""
+      - id: pair_286aef512c0b4368aab95181190b3f7f
+        name: value
+        value: ""
+        description: ""
+    headers:
+      - id: pair_56bd74c6636c41b2856284dae4e55a7b
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1691324420869.5938
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_530b4a89005a400f9ecb7b75635e680f
+    parentId: fld_324f578d24794e0a9bb822f8b004e93c
+    modified: 1692097203294
+    created: 1692097128127
+    url: http://127.0.0.1:5000/test_month
+    name: monthly Test
+    description: test celery job
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1691420163420.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_324f578d24794e0a9bb822f8b004e93c
+    parentId: fld_9575196ae6cb4e879c0d4b6b0ea87a0e
+    modified: 1692097113165
+    created: 1692097110942
+    name: Debug/Testing
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1692074710064
+    _type: request_group
+  - _id: req_07b5a3cceff84dc48e5507e884ce2832
+    parentId: fld_324f578d24794e0a9bb822f8b004e93c
+    modified: 1692097191446
+    created: 1692097189942
+    url: http://127.0.0.1:5000/theatercsv/0
+    name: csv
+    description: make a batch job for exporting theater detail (theater id passed in
+      the route itself)
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_88c960b20c4541d9a1e6d66ba628708c
+        name: Authorization
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1691420163370.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_96cc0cd5b0e54e04ae9a1cf35eff4420
+    parentId: wrk_0859d9fc66b6434e80bba22abc37aebb
+    modified: 1692097856636
+    created: 1691239433397
+    name: Base environment
+    data:
+      base_url: http://127.0.0.1:5000/
+    dataPropertyOrder:
+      "&":
+        - base_url
+    color: null
+    isPrivate: false
+    metaSortKey: 1691239433397
+    _type: environment
+  - _id: jar_e257ebbabb7acc6ed9a29352b9ec13215b24cdd9
+    parentId: wrk_0859d9fc66b6434e80bba22abc37aebb
+    modified: 1691239434985
+    created: 1691239434985
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar

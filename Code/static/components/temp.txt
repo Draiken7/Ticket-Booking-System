@@ -1,0 +1,296 @@
+show:
+{
+    template: `
+    <div>
+    {{ this.$route.params.id}}
+    <div class="container">
+        <div class="row bg-transparent text-white">
+            <div>
+                <router-link to='/admin'>
+                    <button class="btn btn-outline-info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                            class="bi bi-skip-backward" viewBox="0 0 16 16">
+                            <path
+                                d="M.5 3.5A.5.5 0 0 1 1 4v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52-.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L8.5 8.752v2.94c0 .653-.713.998-1.233.696L1 8.752V12a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm7 1.133L1.696 8 7.5 11.367V4.633zm7.5 0L9.196 8 15 11.367V4.633z" />
+                        </svg>
+                    </button>
+                </router-link>
+            </div>
+            <div class="header text-center">
+                <h2>THEATER MANAGEMENT</h2>
+            </div>
+            <div class="mx-auto">
+                <button class="btn btn-primary" @click="toggleadd">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path
+                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                        <path
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="hiderif" v-if="this.add">
+            <h3>Add Theater Details</h3>
+            <p class="text-danger" v-if="this.message">{{this.message}}</p>
+            <button class="btn btn-secondary" @click="toggleadd">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                </svg>
+            </button>
+            <div class="mb-3">
+                <input type="text" placeholder="Name" class="form-control" v-model="form.name">
+            </div>
+            <div class="mb-3">
+                <input type="text" placeholder="Location" class="form-control" v-model="form.location">
+            </div>
+            <div class="mb-3">
+                <input type="number" placeholder="Capacity" classs="form-control" v-model="form.capacity">
+            </div>
+            <div class="mb-3">
+                <button v-bind:class="this.button" @click="addTheater">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="hiderelse" v-else>
+            <div v-if="this.data.length > 0" class="row">
+                <div v-for="(show, index) in this.data.shows" class="accordion">
+                    <div class="accordion-item bg-dark text-white">
+                        <h2 class="accordion-header" :id="'panelsStayOpen-heading-'+index">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                :data-bs-target="'#panelsStayOpen-collapse-'+index" aria-expanded="true"
+                                :aria-controls="'panelsStayOpen-collapse-'+index">
+                                <h3>{{show.title}}</h3>
+                            </button>
+                        </h2>
+                        <div :id="'panelsStayOpen-collapse'-index" class="accordion-collapse collapse show"
+                            :aria-labelledby="'panelsStayOpen-heading'+index">
+                            <div class="accordion-body">
+                                <div>
+                                    <p v-if="show.caption"></p>
+
+                                    <p><strong>From Date::</strong> {{show.starton}}</p>
+                                    <p><strong>Ends on:</strong> {{show.endon}}</p>
+                                    <p><strong>Timings:</strong> {{show.s_time}}</p>
+                                    <div>
+                                    <router-link :to="{ name: 'Show', params: { id: theater.id } }">Show Management for {{theater.name}}</router-link>
+                                    </div>
+                                </div>
+                                <div v-if="update">
+                                    <button class="btn btn-secondary" @click="toggleupdate">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                                        </svg>
+                                    </button>
+                                    <div class="mb-3">
+                                        <input type="text" v-bind:placeholder="theater.name" class="form-control" v-model="form.name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" v-bind:placeholder="theater.location" class="form-control" v-model="form.location">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="number" v-bind:placeholder="theater.capacity" classs="form-control" v-model="form.capacity">
+                                    </div>
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary" @click="updater(theater.id)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline-warning" @click="toggleupdate">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                            fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg>
+                                    </button>
+                                    <span v-if="theater.shows.length>0">
+                                        <p>There are currently active Shows for this theater!</p>
+                                        <button class="btn btn-outline-secondary" disabled>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                <path
+                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                            </svg>
+                                        </button>
+                                    </span>
+                                    <span v-else>
+                                        <button class="btn btn-outline-danger" @click="remove(theater.id)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                <path
+                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                            </svg>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    `,
+    data() {
+        return {
+            data: null,
+            movies: null,
+            tid: this.$route.param.id,
+            uid: null,
+            add: false,
+            form: {
+                name: null,
+                location: null,
+                capacity: null
+            },
+            message: null,
+            error: false,
+            update: false,
+            button: "btn btn-primary",
+            buttonup: "btn btn-primary"
+        }
+    },
+    methods: {
+        toggleadd() {
+            this.add = !this.add
+        },
+        toggleupdate() {
+            this.update = !this.update
+        },
+        addTheater() {
+            this.button = "btn btn-warning"
+            this.message = null
+            this.error = false
+            if (!this.form.name) {
+                this.message = "name cannot be empty"
+            }
+            else if (!this.form.location) {
+                this.message = "Location cannot be empty"
+            }
+            else if (!this.form.capacity) {
+                this.message = "Capacity cannot be empty!"
+            }
+            else {
+                if (this.data.length > 0) {
+                    for (var x of this.data) {
+                        if (x.name == this.form.name) {
+                            this.error = true
+                            this.message = "Theater with same name exists!"
+                            break
+                        }
+                    }
+                }
+                if (!this.error) {
+                    fetch('http://127.0.0.1:5000/theater', {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + localStorage.getItem('auth-token')
+                        },
+                        body: JSON.stringify(this.form)
+                    }).then((res) => res.json()).then((data) => {
+                        console.log(data)
+                        this.message = data.message
+                        this.button = "btn btn-success"
+
+                        this.data.push({
+                            "id": data.id,
+                            "name": this.form.name,
+                            "location": this.form.location,
+                            "capacity": this.form.capacity
+                        })
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+                }
+            }
+            this.form.name = null
+            this.form.location = null
+            this.form.capacity = null
+            this.button = "btn btn-primary"
+            this.error = false
+        },
+        async remove(id) {
+            const res = await fetch('http://127.0.0.1:5000/theater/' + id, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('auth-token')
+                }
+            })
+            const data = await res.json()
+            if (res.status == 200) {
+                this.data = this.data.filter(x => x.id != id)
+            }
+        },
+        async updater(id) {
+            var a = this.data.find(x => (x.id == id))
+            if (!this.form.name) {
+                this.form.name = a.name
+            }
+            if (!this.form.location) {
+                this.form.location = a.location
+            }
+            if (!this.form.capacity) {
+                this.form.capacity = a.capacity
+            }
+            console.log(JSON.stringify(this.form))
+            const res = await fetch('http://127.0.0.1:5000/theater/' + id, {
+                method: "PUT",
+                body: JSON.stringify(this.from),
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": "Bearer " + localStorage.getItem('auth-token')
+                }
+            })
+            const data = await res.json()
+            if (res.status == 200) {
+                var j = this.form
+                j.id = id
+                console.log(j)
+                this.data.find(x => (x.id == id)) = j
+            }
+        },
+        async mounted() {
+            const theat = await fetch('http://127.0.0.1:5000/theater', {
+                methods: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('auth-token')
+                }
+            })
+            this.data = await theat.json()
+
+            const movi = await fetch('http://127.0.0.1:5000/movie', {
+                methods: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('auth-token')
+                }
+            })
+            this.movies = await movi.json()
+            let l = null
+            for (var x of this.data) {
+                l = this.movies.find(y => y.id == x.movieid)
+                x.movie = l.name
+
+            }
+        }
+
+    }
+}

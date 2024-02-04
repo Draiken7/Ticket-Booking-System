@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Hi {{ data['user']['name'] }},</h3>
+    <p>Here is a summary of your past month with us....</p>
+    <br>
+    <p>You watched {{ data['data']|length }} Movies!</p>
+    <br>
+    <p>Your last few booking details are:</p>
+    {% if data['data']|length > 0 %}
+    <table>
+        <thead>
+            <tr>
+                <th>Theater</th>
+                <th>Location</th>
+                <th>Movie</th>
+                <th>Show Date</th>
+                <th>Show Time</th>
+                <!-- Add more column headers as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data['data'] %}
+            <tr>
+                <td>{{ item['theater'] }}</td>
+                <td>{{ item['location'] }}</td>
+                <td>{{ item['movie'] }}</td>
+                <td>{{ item['showdate'] }}</td>
+                <td>{{ item['showtime'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No data available.</p>
+    {% endif %}
+    Hope to you again fellow movie nerd!
+</body>
+
+</html>

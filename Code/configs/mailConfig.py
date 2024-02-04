@@ -1,0 +1,4 @@
+SMPTP_SERVER_HOST = "localhost"
+SMPTP_SERVER_PORT = 1025
+SENDER_ADDRESS = "email@ticket.com"
+SENDER_PASSWORD = ""
